@@ -1,7 +1,12 @@
-﻿const express = require('express')
-const app = express()
+﻿// const express = require('express')
+import express from 'express'
 
+// const cafes = require('./cafes.json')
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 const cafes = require('./cafes.json')
+
+const app = express()
 
 app.listen(3000, console.log('SERVER ON'))
 
@@ -71,4 +76,5 @@ app.use('*', (req, res) => {
   res.status(404).send({ message: 'La ruta que intenta consultar no existe' })
 })
 
-module.exports = app
+// module.exports = app
+export default app
